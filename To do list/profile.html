@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="./css/profile.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #b9a8e3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .back-btn:hover {
+            background-color: #9f87d5;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<a href="home.html" class="back-btn">← Back to Dashboard</a>
+
+<div class="profile-card">
+    <div class="image">
+        <img src="./image/download.webp" alt="" class="profile-img">
+    </div>
+    <br>
+    <div class="text-data">
+        <span class="name">Prince</span>
+        <span class="job">Group Member</span>
+    </div>
+    <br>
+    <div class="analytics">
+        <div class="data">
+            <i class='bx bx-diamond'></i>
+            <span class="number">--0 POINTS--</span>
+        </div>
+        <br>
+        <div class="data">
+            <i class='bx bxs-check-square'></i>
+            <span class="number">0 TASKS COMPLETED</span>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+    const tasks = JSON.parse(localStorage.getItem('userTasks')) || {
+        personal: [],
+        coding: [],
+        work: [],
+        shopping: []
+    };
+    
+    if (userData) {
+        let completedTasks = 0;
+        Object.keys(tasks).forEach(category => {
+            tasks[category].forEach(task => {
+                if (task.status === 'completed') {
+                    completedTasks++;
+                }
+            });
+        });
+        
+        const totalPoints = completedTasks * 5;
+        
+        const nameElement = document.querySelector('.text-data .name');
+        if (nameElement) {
+            nameElement.textContent = userData.username;
+        }
+        
+        const pointsElement = document.querySelector('.analytics .data .number');
+        if (pointsElement) {
+            pointsElement.textContent = '--' + totalPoints + ' POINTS--';
+        }
+        
+        const tasksElement = document.querySelectorAll('.analytics .data .number')[1];
+        if (tasksElement) {
+            tasksElement.textContent = completedTasks + ' TASKS COMPLETED';
+        }
+        
+        userData.points = totalPoints;
+        userData.tasksCompleted = completedTasks;
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+    } else {
+        window.location.href = 'index.html';
+    }
+});
+</script>
+</body>
+</html>

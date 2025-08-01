@@ -1,0 +1,495 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Dubai;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(#f4dbfb, #d8dbfe);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4dbfb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f4dbfb;
+  border-radius: 10px;
+  border: 3px solid #f4dbfb;
+}
+
+.container {
+  position: relative;
+  width: 95%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  border: 5px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+.container .right .remainder {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2;
+  grid-template-areas:
+    "a b"
+    "c c";
+  gap: 10px;
+}
+.container .right .remainder .box {
+  border: 3px solid plum;
+  border-radius: 15px;
+}
+.container .right .remainder .box .term {
+  display: inline-block;
+  padding: 10px;
+}
+.container .right .remainder .box p {
+  padding-left: 10px;
+}
+
+.container .left {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  background-color: #f4dbfb;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container .left header {
+  background-color: #f4dbfb;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.container .left header .logo {
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container .left header .logo img {
+  height: 160px;
+  width: 250px;
+  padding-top: 0;
+  margin-top: 0;
+  scale: 1;
+}
+
+.container .left header .logo:hover {
+  cursor: pointer;
+  color: #000;
+}
+
+.container .left header .logo .close {
+  position: relative;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.container .left header nav ul {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container .left header nav ul li {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .left header nav ul li a {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  padding-left: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: 0s ease;
+}
+
+.container .left header nav ul li:first-child a,
+.container .left header nav ul li a:hover {
+  transition: 0s;
+  background-color: #f1f3ff;
+}
+
+.container .left header nav ul li a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: #6577ff;
+  transition: 0s ease;
+}
+
+.container .left header nav ul li:first-child a::before,
+.container .left header nav ul li a:hover::before {
+  width: 4px;
+}
+
+.container .left header nav ul li a .material-symbols-outlined {
+  color: #999;
+  font-size: 1.7em;
+  margin-right: 10px;
+}
+
+.container .left header nav ul li a .title {
+  color: #999;
+  font-size: 1.1em;
+}
+
+.container .left header nav ul:first-child a:hover .material-symbols-outlined,
+.container .left header nav ul:first-child a:hover .title,
+.container .left header nav ul li a:hover .material-symbols-outlined,
+.container .left header nav ul li a:hover .title {
+  color: #6577ff;
+}
+
+.container .right {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container .right .top {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.container .right .top .searchBx {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.container .right .top .searchBx h2 {
+  color: #000;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+.container .right .top .searchBx .inputBx {
+  position: relative;
+  width: 250px;
+  height: 40px;
+  background: #f8f2fe;
+  border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 10px;
+  gap: 10px;
+  overflow: visible;
+}
+
+.container .right .top .searchBx .input span {
+  color: #999;
+  cursor: pointer;
+}
+
+.container .right .top .searchBx .inputBx input {
+  position: relative;
+  width: 100%;
+  height: 25px;
+  outline: none;
+  border: none;
+  background: transparent;
+  margin-right: 10px;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.container .right .top .searchBx .inputBx span.searchClose {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.container .right .top .user {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.container .right .top .user span {
+  color: #000;
+  cursor: pointer;
+}
+.box {
+  margin: 5px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+.container .right .top .user .userImg {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container .right .top .user .userImg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container .right .top .user h2 {
+  font-size: 1.1em;
+  line-height: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.container .right .top .user h2 span {
+  color: #999;
+  font-size: 0.8em;
+}
+
+.container .right .top .user .arrow {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #999;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .right .top .user .arrow span {
+  color: #000;
+  font-size: 2em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.container .right .top .user .arrow:hover span {
+  transform: scale(1.2);
+}
+
+.container .right .top .user .toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #999;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 50px;
+  display: none;
+}
+
+.container .right .top .user .toggle span {
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.container .right .bottom {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 70px);
+  border-radius: 20px;
+  background: #f8f2fe;
+}
+
+.container .right .bottom .show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .left {
+    width: 100%;
+    height: auto;
+    order: 1;
+  }
+
+  .container .right {
+    width: 100%;
+    height: auto;
+    order: 2;
+  }
+
+  .container .right .top .searchBx .inputBx {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container .left {
+    flex-direction: row;
+    padding: 10px;
+  }
+
+  .container .left header .logo img {
+    height: 100px;
+  }
+
+  .container .right .top .searchBx h2 {
+    font-size: 1.2em;
+  }
+
+  .container .right .top .searchBx .inputBx input {
+    font-size: 1em;
+  }
+
+  .container .right .top .user h2 {
+    font-size: 1em;
+  }
+
+  .container .right .top .user .arrow span {
+    font-size: 1.5em;
+  }
+
+  .container .right .remainder .box p {
+    padding-left: 10px;
+  }
+  .containero {
+    border: 2px solid plum;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    box-shadow: 0 10px 20px 5px #00000023;
+    transition: all 0.3s;
+    height: auto;
+    background: rgb(244, 219, 251);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container .left {
+    width: 100%;
+  }
+
+  .container .left header .logo img {
+    height: 80px;
+  }
+
+  .container .left header nav ul li a {
+    padding-left: 10px;
+  }
+
+  .container .right .top {
+    padding: 15px;
+  }
+
+  .container .right .top .searchBx h2 {
+    font-size: 1em;
+  }
+
+  .container .right .top .searchBx .inputBx {
+    width: 100%;
+  }
+
+  .container .right .top .user h2 {
+    font-size: 0.9em;
+  }
+
+  .container .right .top .user .arrow span {
+    font-size: 1.2em;
+  }
+  .container .right .remainder {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 3;
+    grid-template-areas:
+      "a"
+      "b"
+      "c";
+    gap: 10px;
+  }
+  .container .right .remainder .box {
+    border: 3px solid plum;
+    border-radius: 15px;
+  }
+
+  .containero {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+  }
+  .container .right .remainder .box p {
+    padding-left: 10px;
+  }
+}

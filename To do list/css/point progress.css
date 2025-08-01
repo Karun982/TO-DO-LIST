@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b9a8e3ff;
+    color: #4a3f63;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ede7f6;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1, h2 {
+    color: #6a4c93;
+    margin-bottom: 20px;
+}
+
+.task {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #d1c4e9;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.points {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    flex: 1;
+    margin: 0 5px;
+}
+
+button.complete {
+    background-color: #a5d6a7;
+    color: #fff;
+}
+
+button.not-complete {
+    background-color: #ef9a9a;
+    color: #fff;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.progress-bar-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #d1c4e9;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #6a4c93;
+    transition: width 0.5s ease-in-out;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.stat {
+    background-color: #d1c4e9;
+    padding: 10px;
+    border-radius: 8px;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #4a3f63;
+}
+
+.stat span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6a4c93;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .task p {
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .stat {
+        margin: 0 5px;
+    }
+
+    .progress-bar {
+        height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .points {
+        flex-direction: column;
+    }
+
+    button {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat {
+        margin: 10px 0;
+        width: 100%;
+    }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Login Page</title>
+    <link rel="stylesheet" href="./css/sing.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back!</h1>
+        <p>Please log in to your account.</p>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required class="dd"> <br>
+                <label for="Email"> Email:</label>
+                <input type="email" name="Email" id="Email" required class="dd">
+                <label for="date"> Date:</label>
+                <input type="date" name="date" id="date" class="dd">
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" class="signin-btn">Sign Up</button>
+            <p> Have an account? <a href="index.html">Login</a></p>
+        </form>
+
+        <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('Email').value;
+            const date = document.getElementById('date').value;
+            
+            // Store user data in localStorage
+            const userData = {
+                username: username,
+                email: email,
+                date: date,
+                points: 60,
+                tasksCompleted: 12,
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+            
+            window.location.href = 'home.html';
+        });
+        </script>
+    </div>
+</body>
+</html>

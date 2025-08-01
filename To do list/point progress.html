@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Points System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #d6c4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #ede6fb;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .task-card {
+            background-color: #d7c8f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-complete {
+            background-color: #9fe6a0;
+            color: white;
+        }
+        .btn-not-complete {
+            background-color: #f78d8d;
+            color: white;
+        }
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+        }
+        .progress-bar {
+            background-color: #4a387d;
+        }
+        .stat-box {
+            background-color: #c6b1f5;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .back-btn {
+            background-color: #b9a8e3;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #9f87d5;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="home.html" class="back-btn">← Back to Dashboard</a>
+    <h2 class="text-center font-weight-bold text-primary" id="pointsTitle">Points & Progress</h2>
+
+    <div id="recentTasks"></div>
+
+    <div class="text-center mt-4">
+        <h4>Your Progress</h4>
+        <p>Overall Completion Rate</p>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+        </div>
+        <p class="mt-2"><span id="progressText">0%</span> Complete</p>
+    </div>
+
+    <div class="row text-center mt-4">
+        <div class="col-4">
+            <div class="stat-box">
+                <h5>Total Points</h5>
+                <p id="totalPoints">0</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="stat-box">
+                <h5>Completed Tasks</h5>
+                <p id="completedTasks">0</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="stat-box">
+                <h5>Total Tasks</h5>
+                <p id="totalTasks">0</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+    const tasks = JSON.parse(localStorage.getItem('userTasks')) || {
+        personal: [],
+        coding: [],
+        work: [],
+        shopping: []
+    };
+    
+    if (!userData) {
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    document.getElementById('pointsTitle').textContent = "Points & Progress";
+    
+    let totalTasks = 0;
+    let completedTasks = 0;
+    let recentTasks = [];
+    
+    Object.keys(tasks).forEach(category => {
+        tasks[category].forEach(task => {
+            totalTasks++;
+            if (task.status === 'completed') {
+                completedTasks++;
+            }
+            recentTasks.push({...task, category});
+        });
+    });
+    
+    recentTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    recentTasks = recentTasks.slice(0, 5); // Show only 5 most recent
+    
+    const totalPoints = completedTasks * 5;
+    const progressPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    
+    document.getElementById('totalPoints').textContent = totalPoints;
+    document.getElementById('completedTasks').textContent = completedTasks;
+    document.getElementById('totalTasks').textContent = totalTasks;
+    document.getElementById('progressBar').style.width = progressPercentage + '%';
+    document.getElementById('progressText').textContent = progressPercentage + '%';
+    
+    // Display recent tasks
+    const recentTasksContainer = document.getElementById('recentTasks');
+    if (recentTasks.length > 0) {
+        recentTasksContainer.innerHTML = '<h4 class="text-center mb-3">Recent Tasks</h4>' + 
+            recentTasks.map(task => `
+                <div class="task-card">
+                    <h6 class="text-center">${task.category.charAt(0).toUpperCase() + task.category.slice(1)}: ${task.text}</h6>
+                    <div class="text-center">
+                        <span class="badge ${task.status === 'completed' ? 'badge-success' : 'badge-warning'}">
+                            ${task.status.charAt(0).toUpperCase() + task.status.slice(1)}
+                        </span>
+                        ${task.status === 'completed' ? '<span class="text-success ml-2">+5 Points</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+    } else {
+        recentTasksContainer.innerHTML = '<div class="text-center"><p>No tasks yet. <a href="home.html">Start adding some tasks!</a></p></div>';
+    }
+    
+    userData.points = totalPoints;
+    userData.tasksCompleted = completedTasks;
+    localStorage.setItem('currentUser', JSON.stringify(userData));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="./css/home.css"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    .containero{
+      border: 2px solid plum;
+      text-align: center; 
+ border-radius: 0.5rem;
+padding: 1.5rem 1rem;
+cursor: pointer;
+
+display: flex; 
+ justify-content: center; 
+gap: 50px; 
+box-shadow: 0 10px 20px 5px #00000023;
+transition: all 0.3s;
+height: auto;
+background: rgb(244, 219, 251);}
+
+   .containero .box{
+      text-align: center;
+      background: #a75abc;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px 5px #00000040;
+      height: auto;
+  } 
+  .container .box:hover{
+      transform: translateY(-5px);
+box-shadow: 0 10px 20px 5px #00000040
+  }
+  .container .box>a{
+      font-size: 1.5rem;
+      color: black;
+      font-size: 0.8rem;
+
+  }.container .box p{
+      color: #2e2e2e;
+font-size: 0.8rem;
+opacity: 0.6;
+  }
+  .container.box>img{
+      width: 3rem;
+  }
+  .container .right .top .searchBx .inputBx {
+    position: relative;
+    width: 250px;
+    height: 40px;
+    background: #f8f2fe;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+    gap: 10px;
+    overflow: visible; /* Changed from hidden to visible */
+}
+.container .right .remainder {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1;
+  grid-template-areas: "a b";
+  gap: 10px;
+}
+
+</style>
+  </head>
+<body>
+    <div class="container">
+        <div class="left">
+          <header>  
+            <div class="logo">
+               <img src="./image/logo_transparent.png" alt="">
+                <div class="close">
+                    <span class="material-symbols-outlined">
+                        close
+                        </span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="home.html">
+                        <span class="material-symbols-outlined">
+                            dashboard
+                            </span>
+                        <span class="title">Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="./point progress.html">
+                            <span class="material-symbols-outlined">
+                                loyalty
+                                </span>
+                        <span class="title">Points</span></a>
+                    </li>
+                    <li>
+                        <a href="./about-us.html">
+                        <span class="material-symbols-outlined">
+                            group
+                            </span>
+                        <span class="title">About Us</span></a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="logout()">
+                        <span class="material-symbols-outlined">
+                            logout
+                            </span>
+                        <span class="title">Logout</span></a>
+                    </li>
+                    <li>
+                        <a href="./profile.html">
+                        <span class="material-symbols-outlined">
+                            account_circle
+                            </span>
+                        <span class="title">Account</span></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+       </div>
+       <div class="right">
+         <div class="top">
+            <div class="searchBx">
+                <h2>Dashboard</h2>
+                <div class="inputBx">
+                    <span class="material-symbols-outlined searchOpen">
+                        search
+                    </span>
+                    <input type="text" placeholder="Search tasks..." id="searchInput">
+                    <span class="material-symbols-outlined searchClose">
+                        close
+                        </span>
+                </div>
+            </div>
+            <div class="user">
+                <div class="userImg">
+                    <img src="./image/download.webp" alt="">
+                </div>  
+                <h2 id="userName">Prince<br><span>Group Member</span></h2>  
+            </div>
+         </div>
+         <div class="remainder" >
+            <div class="box" style="grid-area: a; background-color: #b9a8e3ff;;">
+                <p>Pending</p>
+                <i class="fa-regular fa-clock fa-shake term" style="color: red;"></i>
+                <h4 class="term" id="pendingCount">0</h4>
+            </div>
+            <div class="box" style="grid-area: b; background-color: #b9a8e3ff;">
+                <p>Completed</p>
+                <i class="fa-regular fa-circle-check fa-beat-fade term"></i>
+                <h4 class="term" id="completedCount">0</h4>
+            </div>
+         </div>
+          
+              
+        
+            <div class="containero">
+                <div class="box" style="grid-area: f;" onclick="openCategory('personal')">
+                    <div>
+                    <img src="./image/personal.png" alt=""></div>
+                    <a href="javascript:void(0)">Personal</a>
+                    <p id="personalCount">0 Tasks</p>
+                </div>
+                <div class="box" style="grid-area: g;" onclick="openCategory('coding')">
+                    <div>
+                    <img src="./image/web.png" alt=""></div>
+                    <a href="javascript:void(0)">Coding</a>
+                    <p id="codingCount">0 Tasks</p>
+                </div>
+                <div class="box" style="grid-area: h;" onclick="openCategory('work')">
+                    <div>
+                    <img src="./image/work.png" alt=""></div>
+                    <a href="javascript:void(0)">Work</a>
+                    <p id="workCount">0 Tasks</p>
+                </div>
+                <div class="box" style="grid-area: e;" onclick="openCategory('shopping')">
+                    <div>
+                    <img src="./image/shope.png" alt="" ></div>
+                    <a href="javascript:void(0)">Shopping</a>
+                    <p id="shoppingCount">0 Tasks</p>
+                </div>
+                
+            </div>
+       </div>
+    </div>
+    <script>
+
+let tasks = JSON.parse(localStorage.getItem('userTasks')) || {
+    personal: [],
+    coding: [],
+    work: [],
+    shopping: []
+};
+
+
+// Load user data when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+    
+    if (userData) {
+        const userNameElement = document.getElementById('userName');
+        if (userNameElement) {
+            userNameElement.innerHTML = userData.username + '<br><span>Group Member</span>';
+        }
+        updateDashboard();
+        loadAllTasks();
+    } else {
+        window.location.href = 'index.html';
+    }
+
+});
+
+function loadAllTasks() {
+    allTasks = [];
+    Object.keys(tasks).forEach(category => {
+        tasks[category].forEach(task => {
+            allTasks.push({
+                ...task,
+                category: category
+            });
+        });
+    });
+}
+
+function openTaskCategory(category, taskId = null) {
+    localStorage.setItem('selectedCategory', category);
+    if (taskId) {
+        localStorage.setItem('highlightTask', taskId);
+    }
+    window.location.href = 'tasks.html';
+}
+
+function updateDashboard() {
+    let totalPending = 0;
+    let totalCompleted = 0;
+    
+    Object.keys(tasks).forEach(category => {
+        const categoryTasks = tasks[category];
+        const categoryCount = categoryTasks.length;
+        
+        document.getElementById(category + 'Count').textContent = categoryCount + ' Tasks';
+        
+        // Count by status
+        categoryTasks.forEach(task => {
+            if (task.status === 'pending') totalPending++;
+            else if (task.status === 'completed') totalCompleted++;
+        });
+    });
+    
+    document.getElementById('pendingCount').textContent = totalPending;
+    document.getElementById('completedCount').textContent = totalCompleted;
+    
+    const userData = JSON.parse(localStorage.getItem('currentUser'));
+    if (userData) {
+        userData.tasksCompleted = totalCompleted;
+        userData.points = totalCompleted * 5; // 5 points per completed task
+        localStorage.setItem('currentUser', JSON.stringify(userData));
+    }
+}
+
+function openCategory(category) {
+    localStorage.setItem('selectedCategory', category);
+    window.location.href = 'tasks.html';
+}
+
+function logout() {
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userTasks');
+    localStorage.removeItem('selectedCategory');
+    window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>

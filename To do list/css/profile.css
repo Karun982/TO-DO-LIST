@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4dbfb;
+    padding: 20px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 370px;
+    width: 100%;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    height: 36%;
+    width: 100%;
+    background-color: plum;
+    top: 0;
+    border-radius: 24px 24px 0 0;
+    left: 0;
+}
+
+.image {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: #4070f4;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+.image .profile-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.profile-card .text-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+.text-data .name {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.text-data .job {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.profile-card .analytics {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.analytics .data {
+    display: flex;
+    align-items: center;
+    color: #333;
+    padding: 0 20px;
+    border-right: 2px solid #e7e7e7;
+    flex: 1;
+    text-align: center;
+}
+
+.data i {
+    font-size: 18px;
+    margin-right: 6px;
+}
+
+.data:last-child {
+    border-right: none;
+}
+
+.buttons.button:hover {
+    background-color: #0e4bf1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .analytics {
+        flex-direction: column;
+    }
+
+    .data {
+        border-right: none;
+        border-bottom: 2px solid #e7e7e7;
+        margin-bottom: 10px;
+        padding: 10px 0;
+    }
+
+    .data:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .text-data .name, .text-data .job {
+        font-size: 18px;
+    }
+
+    .image {
+        height: 120px;
+        width: 120px;
+    }
+
+    .analytics .data {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+}

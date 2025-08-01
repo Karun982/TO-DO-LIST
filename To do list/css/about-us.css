@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    background-color: rgb(210, 210, 210);
+}
+
+header {
+    margin: 0;
+    background-image: url(./list2.jpg);
+    width: 100%;
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#font1 {
+position: absolute;
+    width: 50vw;
+    top: 20%;
+       left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.indata {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    border: 1px solid black;
+ height: auto;
+    border-radius: 30px;
+    padding: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+      box-shadow: 10px 10px 2px grey;
+    background-color: rgb(235, 235, 235);
+    gap: 20px;
+}
+
+.indata:hover {
+    transform: scale(1.02);
+    transition: ease all 0.5s;
+}
+
+.selimg, .selimg2, .selimg3 {
+    border: 1px solid black;
+    width: 15vw;
+    height: 15vw;
+    min-height: 200px;
+ border-radius: 50%;
+    background-size: cover;
+background-position: center;
+    background-repeat: no-repeat;
+}
+
+.selimg {
+    background-image: url(./kartik1.jpeg);
+}
+
+.selimg2 {
+    background-image: url(./prince.jpeg);
+}
+
+.selimg3 {
+    background-image: url(./karun.jpg);
+}
+
+.details {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.abt {
+    text-align: center;
+    max-width: 500px;
+    font-size: 1em;
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    #font1 {
+        font-size: 80px;
+        width: 70vw;
+    }
+    
+    .indata {
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    .selimg, .selimg2, .selimg3 {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #font1 {
+        font-size: 60px;
+        width: 80vw;
+    }
+
+    .indata {
+        width: 100vw;
+        padding: 20px;
+    }
+
+    .selimg, .selimg2, .selimg3 {
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .details, .abt {
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #font1 {
+        font-size: 40px;
+        width: 90vw;
+    }
+
+    .indata {
+        width: 95vw;
+        padding: 10px;
+    }
+
+    .selimg, .selimg2, .selimg3 {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .details, .abt {
+        font-size: 0.8em;
+    }
+    header {
+        margin: 0;
+        background-image: url(./list2.jpg);
+        width: 100%;
+        height: 80vh;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+}

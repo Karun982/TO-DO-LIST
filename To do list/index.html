@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Login Page</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back!</h1>
+        <p>Please log in to your account.</p>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required class="dd"> <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required class="dd">
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="rememberMe">
+                <label for="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+            <p>Don't have an account? <a href="sign.html">Sign Up</a></p>
+        </form>
+
+        <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+  
+            if (username && password) {
+                let userData = JSON.parse(localStorage.getItem('currentUser'));
+                if (!userData || userData.username !== username) {
+                    userData = {
+                        username: username,
+                        email: username + '@example.com',
+                        date: new Date().toISOString().split('T')[0],
+                        points: 60,
+                        tasksCompleted: 12
+                    };
+                    localStorage.setItem('currentUser', JSON.stringify(userData));
+                }
+                
+                window.location.href = 'home.html';
+            } else {
+                alert('Please enter both username and password');
+            }
+        });
+        </script>
+    </div>
+</body>
+</html>
+
